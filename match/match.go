@@ -19,6 +19,25 @@ func (m Match) ToLower() Match {
 	}
 }
 
+func (m Match) ToSplited(line2splited func(string) []string) Match {
+	return func(ctx context.Context, line string, s map[string]struct{}) bool {
+		var splited []string = line2splited(line)
+		for _, item := range splited {
+			select {
+			case <-ctx.Done():
+				return false
+			default:
+			}
+
+			var hit bool = m(ctx, item, s)
+			if hit {
+				return true
+			}
+		}
+		return false
+	}
+}
+
 func (m Match) WriteMatchAll(
 	ctx context.Context,
 	lines iter.Seq[string],
