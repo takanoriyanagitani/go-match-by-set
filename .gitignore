@@ -25,3 +25,4 @@ go.work.sum
 .env
 *.swp
 cmd/match-by-set-simple/match-by-set-simple
+cmd/match-by-set-splited/match-by-set-splited
