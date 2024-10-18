@@ -27,7 +27,7 @@ var WordsPath string = os.Getenv("ENV_WORDS_PATH")
 
 var Separator string = getenvOrAlt("ENV_SPLIT_CHAR", " ")
 
-var match m.Match = m.Match(sm.SimpleMatch).ToLower().ToSplited(
+var match m.Match = m.Match(sm.SimpleMatch).ToSplited(
 	func(line string) []string { return strings.Split(line, Separator) },
 )
 

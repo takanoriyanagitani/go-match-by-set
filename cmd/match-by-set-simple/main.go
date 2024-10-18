@@ -14,7 +14,7 @@ import (
 
 var WordsPath string = os.Getenv("ENV_WORDS_PATH")
 
-var match m.Match = m.Match(sm.SimpleMatch).ToLower()
+var match m.Match = sm.SimpleMatch
 
 func onMap(s map[string]struct{}) error {
 	return match.StdinToStdout(
